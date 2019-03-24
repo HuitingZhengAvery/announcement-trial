@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
-const { Item } = mongoose;
+const { Schema } = mongoose;
 
-const AnnouncementItem = new Item({
+const AnnouncementSchema = new Schema({
   title: String,
   body: String,
-  author: String,        //how to get the props from 'this.username' so that you don't need to fill in 'author'
+  author: String,       
 }, { timestamps: true });
 
-AnnouncementItem.methods.toJSON = function() {  
+AnnouncementSchema.methods.toJSON = function() {  
   return {
     id: this.id,
     title: this.title,
@@ -19,4 +19,4 @@ AnnouncementItem.methods.toJSON = function() {
   };
 };
 
-mongoose.model('Announcement', AnnouncementItem);
+mongoose.model('Announcement', AnnouncementSchema);
